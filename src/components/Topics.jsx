@@ -1,13 +1,27 @@
 /* eslint-disable react/prop-types */
-function Topics({ dispatch, questions }) {
+function Topics({ dispatch, questions, toggleMode }) {
   return (
     <div className="px-5 py-14 flex flex-col md:flex-row md:justify-center md:gap-36 gap-8">
       <div className="flex flex-col gap-2">
-        <h1 className="text-4xl flex flex-col tracking-wide">
+        <h1
+          className={`text-4xl flex flex-col tracking-wide ${
+            toggleMode ? "text-white" : ""
+          }`}
+        >
           <span className="font-thin">Welcome to the</span>
-          <span className="font-bold text-[#3B4D66]">Frontend Quiz!</span>
+          <span
+            className={`font-bold ${
+              toggleMode ? "text-white" : "text-[#3B4D66]"
+            } `}
+          >
+            Frontend Quiz!
+          </span>
         </h1>
-        <p className="font-normal italic text-slate-500  text-xs">
+        <p
+          className={`font-normal italic ${
+            toggleMode ? "text-[#ABC1E1]" : "text-slate-500 "
+          }  text-xs`}
+        >
           Pick a subject to get started.
         </p>
       </div>
@@ -20,7 +34,9 @@ function Topics({ dispatch, questions }) {
               payload: questions.filter((quizz) => quizz?.title === "HTML"),
             })
           }
-          className="w-full bg-white flex items-center gap-7 py-2 px-4 rounded-md shadow-lg"
+          className={`w-full ${
+            toggleMode ? "bg-[#3B4D66] text-white" : "bg-white "
+          } flex items-center gap-7 py-2 px-4 rounded-md shadow-lg`}
         >
           <span className="bg-[#FFF1E9] p-1 rounded-lg">
             <svg
@@ -46,7 +62,9 @@ function Topics({ dispatch, questions }) {
               payload: questions.filter((quizz) => quizz?.title === "CSS"),
             })
           }
-          className="w-full bg-white flex items-center gap-7 py-2 px-4 rounded-md shadow-lg"
+          className={`w-full ${
+            toggleMode ? "bg-[#3B4D66] text-white" : "bg-white "
+          } flex items-center gap-7 py-2 px-4 rounded-md shadow-lg`}
         >
           <span className="bg-[#E0FDEF] p-1 rounded-lg">
             <svg
@@ -74,7 +92,9 @@ function Topics({ dispatch, questions }) {
               ),
             })
           }
-          className="w-full bg-white flex items-center gap-7 py-2 px-4 rounded-md shadow-lg"
+          className={`w-full ${
+            toggleMode ? "bg-[#3B4D66] text-white" : "bg-white "
+          } flex items-center gap-7 py-2 px-4 rounded-md shadow-lg`}
         >
           <span className="bg-[#EBF0FF] p-1 rounded-lg">
             <svg
@@ -102,7 +122,9 @@ function Topics({ dispatch, questions }) {
               ),
             })
           }
-          className="w-full bg-white flex items-center gap-7 py-2 px-4 rounded-md shadow-lg"
+          className={`w-full ${
+            toggleMode ? "bg-[#3B4D66] text-white" : "bg-white "
+          } flex items-center gap-7 py-2 px-4 rounded-md shadow-lg`}
         >
           <span className="bg-[#F6E7FF] p-1 rounded-lg">
             <svg

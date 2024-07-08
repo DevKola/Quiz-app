@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-function Title({ questions }) {
+function Title({ questions, toggleMode }) {
   return (
     <div className="flex items-center gap-2">
       {questions?.title === "Accessibility" && (
@@ -67,7 +67,13 @@ function Title({ questions }) {
           </svg>
         </span>
       )}
-      <p className="font-semibold">{questions ? questions?.title : ""}</p>
+      <p
+        className={`font-semibold ${
+          toggleMode ? "text-white" : "text-[#3B4D66]"
+        }`}
+      >
+        {questions ? questions?.title : ""}
+      </p>
     </div>
   );
 }

@@ -11,14 +11,23 @@ function Questions({
   selectedOption,
   index,
   noAnswer,
+  toggleMode,
 }) {
   return (
     <div className="px-5 py-14 flex flex-col md:flex-row md:justify-center md:gap-36 gap-8">
       <div className="flex flex-col gap-2">
-        <p className="italic text-xs text-slate-500">
+        <p
+          className={`italic text-xs ${
+            toggleMode ? "text-[#ABC1E1]" : "text-slate-500"
+          } `}
+        >
           Question <span>{index + 1}</span> / {numQuestions}
         </p>
-        <h1 className="text-4xl flex flex-col tracking-wide">
+        <h1
+          className={`text-4xl flex flex-col tracking-wide ${
+            toggleMode ? "text-white" : ""
+          }`}
+        >
           {questions?.question}
         </h1>
 
@@ -26,6 +35,7 @@ function Questions({
           numQuestions={numQuestions}
           index={index}
           answer={answer}
+          toggleMode={toggleMode}
         />
       </div>
 
@@ -35,6 +45,7 @@ function Questions({
           dispatch={dispatch}
           answer={answer}
           selectedOption={selectedOption}
+          toggleMode={toggleMode}
         />
 
         <Button

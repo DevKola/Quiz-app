@@ -1,16 +1,36 @@
 /* eslint-disable react/prop-types */
-function FinishScreen({ points, questions, numQuestions, dispatch }) {
+function FinishScreen({
+  points,
+  questions,
+  numQuestions,
+  dispatch,
+  toggleMode,
+}) {
   return (
     <div className="mt-5 px-4 flex flex-col md:flex-row md:justify-between gap-9">
       <div className="flex flex-col gap-2">
-        <h1 className="text-4xl flex flex-col tracking-wide">
+        <h1
+          className={`text-4xl flex flex-col tracking-wide ${
+            toggleMode ? "text-white" : ""
+          }`}
+        >
           <span className="font-thin">Quiz completed</span>
-          <span className="font-bold text-[#3B4D66]">You scored...</span>
+          <span
+            className={`font-bold ${
+              toggleMode ? "text-white" : "text-[#3B4D66]"
+            } `}
+          >
+            You scored...
+          </span>
         </h1>
       </div>
 
       <div className="h-fit flex flex-col items-center gap-5 justify-center md:w-6/12">
-        <div className="w-5/6 flex flex-col gap-5 items-center text-center shadow-lg shadow-slate-200 py-4 bg-white rounded-md">
+        <div
+          className={`w-5/6 flex flex-col gap-5 items-center text-center shadow-lg shadow-slate-200 py-4 ${
+            toggleMode ? "bg-[#3B4D66] shadow-slate-800 " : "bg-white"
+          }  rounded-md`}
+        >
           <div className="flex items-center gap-2">
             {questions?.title === "Accessibility" && (
               <span className="bg-[#F6E7FF] p-1 rounded-lg">
@@ -77,18 +97,26 @@ function FinishScreen({ points, questions, numQuestions, dispatch }) {
                 </svg>
               </span>
             )}
-            <p className="font-semibold">{questions ? questions?.title : ""}</p>
+            <p className={`font-semibold ${toggleMode ? "text-white" : ""}`}>
+              {questions ? questions?.title : ""}
+            </p>
           </div>
 
-          <span className="text-8xl font-semibold text-slate-700">
+          <span
+            className={`text-8xl font-semibold text-slate-700 ${
+              toggleMode ? "text-white" : "text-slate-700"
+            }`}
+          >
             {points}
           </span>
-          <span>out of {numQuestions}</span>
+          <span className={`${toggleMode ? "text-white" : "text-black"}`}>
+            out of {numQuestions}
+          </span>
         </div>
 
         <button
           onClick={() => dispatch({ type: "restart" })}
-          className="bg-purple-700 text-white py-3 w-5/6 rounded-md"
+          className="bg-purple-700 hover:bg-purple-400 text-white py-3 w-5/6 rounded-md"
           // disabled={!hasAnswer}
         >
           Play Again

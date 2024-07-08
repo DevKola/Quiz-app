@@ -1,21 +1,23 @@
 /* eslint-disable react/prop-types */
-function Options({ questions, dispatch, answer, selectedOption }) {
+function Options({ questions, dispatch, answer, selectedOption, toggleMode }) {
   const hasAnswer = answer !== null;
 
   return (
     <div className="flex flex-col gap-5 md:w-full">
       {questions?.options.map((option, i) => (
         <button
-          className={`group w-full border-2 border-transparent md:border-2 md:border-transparent bg-white flex items-center justify-between py-2 px-4 rounded-md shadow-lg hover:border-2 hover:border-purple-700 duration-300 ${
+          className={`group w-full border-2 border-transparent md:border-2 md:border-transparent ${
+            toggleMode ? "bg-[#3B4D66]" : "bg-white"
+          }  flex items-center justify-between py-2 px-4 rounded-md shadow-lg hover:border-2 hover:border-purple-700 duration-300 ${
             hasAnswer &&
             answer === selectedOption?.at(0) &&
             i === selectedOption?.at(1) &&
-            "border-green-700 md:border-green-700 "
+            "border-green-700 md:border-green-700  lg:border-green-700"
           } ${
             hasAnswer &&
             answer !== selectedOption?.at(0) &&
             i === selectedOption?.at(1) &&
-            "border-red-700 md:border-red-700"
+            "border-red-700 md:border-red-700 lg:border-red-700"
           }`}
           key={option}
           onClick={() => dispatch({ type: "newAnswer", payload: [option, i] })}
@@ -42,7 +44,11 @@ function Options({ questions, dispatch, answer, selectedOption }) {
               {i === 2 && "C"}
               {i === 3 && "D"}
             </span>
-            <span className="text-xl text-start">{option}</span>
+            <span
+              className={`text-xl text-start ${toggleMode ? "text-white" : ""}`}
+            >
+              {option}
+            </span>
           </div>
 
           <div>

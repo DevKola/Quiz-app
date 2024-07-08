@@ -7,7 +7,7 @@ function Button({ dispatch, answer, index, numQuestions }) {
       <>
         <button
           onClick={() => dispatch({ type: "nextQuestion" })}
-          className="bg-purple-700 text-white py-3 rounded-md"
+          className="bg-purple-700 hover:bg-purple-400 text-white py-3 rounded-md"
           disabled={!hasAnswer}
         >
           {!answer && "Submit Answer"}
@@ -41,7 +41,7 @@ function Button({ dispatch, answer, index, numQuestions }) {
       <>
         <button
           onClick={() => dispatch({ type: "finish" })}
-          className="bg-purple-700 text-white py-3 rounded-md"
+          className="bg-purple-700 hover:bg-purple-400 text-white py-3 rounded-md"
           disabled={!hasAnswer}
         >
           {!answer && "Submit Answer"}
